@@ -3,11 +3,13 @@
 # проверка минимальной версии установленного cmake
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
+set(TARGET_NAME "hw-002")
+
 set(PATCH_VERSION "2" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 0.1.${PATCH_VERSION})
 
 # устанавливается имя исполняемого файла
-project(hw-002 VERSION ${PROJECT_VESRION})
+project(${TARGET_NAME} VERSION ${PROJECT_VESRION})
 
 # подключается папка с главной функцией - main.cpp
 add_subdirectory(src)
@@ -21,7 +23,7 @@ enable_testing()
 # подключается папка с тестами
 add_subdirectory(tests)
 
-install(TARGETS hw-002 RUNTIME DESTINATION bin)
+install(TARGETS ${TARGET_NAME} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
