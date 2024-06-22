@@ -27,7 +27,7 @@ Checks: >
   portability-*,
   -readability-*  # not too useful for examples
 
-# WarningsAsErrors: "*"
+WarningsAsErrors: "*"
 
 FormatStyle: file
 
