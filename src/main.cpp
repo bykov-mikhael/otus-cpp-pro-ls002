@@ -9,8 +9,6 @@
 using ip_addr = std::tuple<int, int, int, int>;
 using ip_addrs = std::vector<ip_addr>;
 
-enum sort_type { LE = 0, LT = 1, EQ = 2, GT = 3, GE = 4 };
-
 ip_addrs ip_addrs_pool;
 
 auto extract_element(std::string sSourceString) {
@@ -41,15 +39,6 @@ bool IPAddrGE(ip_addr ConditionValueL, ip_addr ConditionValueR) {
   return std::get<0>(ConditionValueL) > std::get<0>(ConditionValueR);
 }
 
-/*
-1.10.1.1
-1.2.1.1
-1.1.1.1
-1.1.1.2
-12.155.92.10
-12.155.92.10
-*/
-
 bool IPAddrLE(ip_addr ConditionValueL, ip_addr ConditionValueR) {
 
   if (std::get<0>(ConditionValueL) > std::get<0>(ConditionValueR)) {
@@ -79,22 +68,6 @@ bool IPAddrLE(ip_addr ConditionValueL, ip_addr ConditionValueR) {
   }
 
   return false;
-
-  // try {
-  //   if (std::get<0>(ConditionValueL) < std::get<0>(ConditionValueR)) {
-  //     return true;
-  //   } else if (std::get<1>(ConditionValueL) < std::get<1>(ConditionValueR)) {
-  //     return true;
-  //   } else if (std::get<2>(ConditionValueL) < std::get<2>(ConditionValueR)) {
-  //     return true;
-  //   }
-  //   if (std::get<3>(ConditionValueL) < std::get<3>(ConditionValueR)) {
-  //     return true;
-  //   }
-  //   return false;
-  // } catch (...) {
-  //   return false;
-  // }
 }
 
 void print_element(ip_addrs IPAddr) {
@@ -139,12 +112,11 @@ int main() {
         ip_addrs_pool.push_back(extract_element(line));
       }
 
-      // std::cout << "0. Полный список адресов без сортировки. Одна
-      // строка - "
-      //              "один адрес."
-      //           << std::endl;
+      std::cout << "0. Полный список адресов без сортировки. Одна строка - "
+                   "один адрес."
+                << std::endl;
 
-      // print_element(ip_addrs_pool);
+      print_element(ip_addrs_pool);
 
       std::cout << "1. Полный список адресов после сортировки. Одна строка - "
                    "один адрес."
