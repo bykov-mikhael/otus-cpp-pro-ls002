@@ -101,57 +101,49 @@ void print_element(ip_addrs IPAddr, int iAnyOct) {
 
 int main() {
 
-  std::ifstream in("ip_filter.tsv");
-
   try {
 
-    if (in.is_open()) {
-      std::string line;
-
-      while (std::getline(in, line, '\n')) {
-        ip_addrs_pool.push_back(extract_element(line));
-      }
-
-      std::cout << "0. Полный список адресов без сортировки. Одна строка - "
-                   "один адрес."
-                << std::endl;
-
-      print_element(ip_addrs_pool);
-
-      std::cout << "1. Полный список адресов после сортировки. Одна строка - "
-                   "один адрес."
-                << std::endl;
-
-      std::sort(ip_addrs_pool.begin(), ip_addrs_pool.end(), IPAddrLE);
-
-      print_element(ip_addrs_pool);
-
-      std::cout << "2. Сразу следом список адресов, первый байт которых равен "
-                   "1. Порядок сортировки не меняется. Одна строка - один "
-                   "адрес. Списки ничем не разделяются."
-                << std::endl;
-
-      print_element(ip_addrs_pool, 1);
-
-      std::cout << "3. Сразу продолжается список адресов, первый байт которых "
-                   "равен 46, а второй 70. Порядок сортировки не меняется. "
-                   "Одна строка - один адрес. Списки ничем не разделяются."
-                << std::endl;
-
-      print_element(ip_addrs_pool, 46, 70);
-
-      std::cout << "4. Сразу продолжается список адресов, любой байт которых "
-                   "равен 46. Порядок сортировки не меняется. Одна строка - "
-                   "один адрес. Списки ничем не разделяются."
-                << std::endl;
-
-      print_element(ip_addrs_pool, 46);
+    for (std::string line; std::getline(std::cin, line);) {
+      ip_addrs_pool.push_back(extract_element(line));
     }
+
+    std::cout << "0. Полный список адресов без сортировки. Одна строка - "
+                 "один адрес."
+              << std::endl;
+
+    print_element(ip_addrs_pool);
+
+    std::cout << "1. Полный список адресов после сортировки. Одна строка - "
+                 "один адрес."
+              << std::endl;
+
+    std::sort(ip_addrs_pool.begin(), ip_addrs_pool.end(), IPAddrLE);
+
+    print_element(ip_addrs_pool);
+
+    std::cout << "2. Сразу следом список адресов, первый байт которых равен "
+                 "1. Порядок сортировки не меняется. Одна строка - один "
+                 "адрес. Списки ничем не разделяются."
+              << std::endl;
+
+    print_element(ip_addrs_pool, 1);
+
+    std::cout << "3. Сразу продолжается список адресов, первый байт которых "
+                 "равен 46, а второй 70. Порядок сортировки не меняется. "
+                 "Одна строка - один адрес. Списки ничем не разделяются."
+              << std::endl;
+
+    print_element(ip_addrs_pool, 46, 70);
+
+    std::cout << "4. Сразу продолжается список адресов, любой байт которых "
+                 "равен 46. Порядок сортировки не меняется. Одна строка - "
+                 "один адрес. Списки ничем не разделяются."
+              << std::endl;
+
+    print_element(ip_addrs_pool, 46);
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
-    in.close();
   }
 
-  in.close();
   return 0;
 }
