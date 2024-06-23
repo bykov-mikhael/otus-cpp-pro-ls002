@@ -52,27 +52,49 @@ bool IPAddrGE(ip_addr ConditionValueL, ip_addr ConditionValueR) {
 
 bool IPAddrLE(ip_addr ConditionValueL, ip_addr ConditionValueR) {
 
-  if (std::get<0>(ConditionValueL) < std::get<0>(ConditionValueR)) {
-    return true;
-  } else if (std::get<1>(ConditionValueL) < std::get<1>(ConditionValueR)) {
-    return true;
-  } else if (std::get<2>(ConditionValueL) < std::get<2>(ConditionValueR)) {
-    return true;
-  }
-  if (std::get<3>(ConditionValueL) < std::get<3>(ConditionValueR)) {
+  if (std::get<0>(ConditionValueL) > std::get<0>(ConditionValueR)) {
     return true;
   }
 
   if (std::get<0>(ConditionValueL) == std::get<0>(ConditionValueR)) {
-    if (std::get<1>(ConditionValueL) == std::get<1>(ConditionValueR)) {
-      if (std::get<2>(ConditionValueL) == std::get<2>(ConditionValueR)) {
-        if (std::get<3>(ConditionValueL) == std::get<3>(ConditionValueR)) {
-          return false;
-        }
-      }
+    if (std::get<1>(ConditionValueL) > std::get<1>(ConditionValueR)) {
+      return true;
     }
   }
+
+  if (std::get<1>(ConditionValueL) == std::get<1>(ConditionValueR)) {
+    if (std::get<2>(ConditionValueL) > std::get<2>(ConditionValueR)) {
+      return true;
+    }
+  }
+
+  if (std::get<2>(ConditionValueL) == std::get<2>(ConditionValueR)) {
+    if (std::get<3>(ConditionValueL) > std::get<3>(ConditionValueR)) {
+      return true;
+    }
+  }
+
+  if (std::get<3>(ConditionValueL) == std::get<3>(ConditionValueR)) {
+    return true;
+  }
+
   return false;
+
+  // try {
+  //   if (std::get<0>(ConditionValueL) < std::get<0>(ConditionValueR)) {
+  //     return true;
+  //   } else if (std::get<1>(ConditionValueL) < std::get<1>(ConditionValueR)) {
+  //     return true;
+  //   } else if (std::get<2>(ConditionValueL) < std::get<2>(ConditionValueR)) {
+  //     return true;
+  //   }
+  //   if (std::get<3>(ConditionValueL) < std::get<3>(ConditionValueR)) {
+  //     return true;
+  //   }
+  //   return false;
+  // } catch (...) {
+  //   return false;
+  // }
 }
 
 void print_element(ip_addrs IPAddr) {
