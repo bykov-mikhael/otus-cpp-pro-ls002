@@ -15,12 +15,14 @@ target_include_directories(
   ${TARGET_NAME} PRIVATE
   ${CMAKE_SOURCE_DIR}/build # ссылка на config.h.in
   ${CMAKE_SOURCE_DIR}/include/version # ссылка на version
+  ${CMAKE_SOURCE_DIR}/include/sort_ip # ссылка на sort_ip
 )
 
 # параметры компановщика/линковщика:
 # парамтеры библотек должны совпадать с названием в add_library(shared_lib SHARED, add_library(static_lib STATIC
 target_link_libraries(${TARGET_NAME}
   version_lib
+  sort_ip
 )
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")

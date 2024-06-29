@@ -25,12 +25,14 @@ set_target_properties(unit_tests PROPERTIES
 # указание путей для директивы include ...
 target_include_directories(unit_tests PRIVATE
   ${CMAKE_SOURCE_DIR}/include/version # ... библиотеки version
+  ${CMAKE_SOURCE_DIR}/include/sort_ip # ... библиотеки sort_ip
 )
 
 # указание путей бибилиотек для линковщика ...
 target_link_libraries(unit_tests
   ${Boost_LIBRARIES} # ... библиотеки boost
   version_lib # ... библиотеки version
+  sort_ip # ... библиотеки sort_ip
 )
 
 # настройка параметров компиляции в зависимости от целевой платформы

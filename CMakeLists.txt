@@ -17,12 +17,14 @@ add_subdirectory(src)
 # подключается статическая бибилотека version
 add_subdirectory(include/version)
 
+# подключается статическая бибилотека sort_ip
+add_subdirectory(include/sort_ip)
+
 # подключается тестирование
 enable_testing()
 
 # подключается папка с тестами
 add_subdirectory(tests)
-
 install(TARGETS ${TARGET_NAME} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
