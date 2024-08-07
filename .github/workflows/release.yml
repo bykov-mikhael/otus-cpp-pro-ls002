@@ -33,6 +33,7 @@ jobs:
           draft: false
           prerelease: false
       - run: ls *
+      - run: cd bin
       - run: cat ip_filter.tsv | ./hw-002
       - name: Upload Release Asset
         id: upload-release-asset
