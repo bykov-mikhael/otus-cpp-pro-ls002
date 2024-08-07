@@ -1,4 +1,5 @@
 # message(STATUS "MY_VARIABLE=${CMAKE_SOURCE_DIR}")
+#
 
 # проверка минимальной версии установленного cmake
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
